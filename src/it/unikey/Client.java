@@ -70,6 +70,14 @@ public class Client {
         this.orders = orders;
     }
 
+    public void moreThan10(){
+        if(Client.this.getContacts().size() >= 10){
+            System.out.println("Questa azienda ha più di 10 contatti");
+        }
+        else{
+            System.out.println("Questa azienda ha meno di 10 contatti");
+        }
+    }
     @Override
     public String toString() {
         return code + " " + name + " " + partitaIVA;

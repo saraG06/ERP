@@ -66,7 +66,6 @@ public class Main {
         client3.getContacts().add(contact2);
         client3.getContacts().add(contact3);
 
-        List<Client> ex01 = clients.stream().filter(client -> client.getContacts().size() >= 10).collect(Collectors.toList());
-        ex01.forEach(System.out::println);
+        client1.moreThan10();
     }
 }
