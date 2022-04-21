@@ -1,6 +1,7 @@
 package it.unikey;
 
 import it.unikey.Enum.Risorse;
+import it.unikey.Enum.Ruoli;
 import it.unikey.persone.Collaboratore;
 import it.unikey.persone.Contatto;
 import it.unikey.persone.Dipendente;
@@ -50,12 +51,25 @@ public class Azienda {
 
     }
 
-    public ArrayList<Fattura> fattureCliente(Contatto c){
+    public List<Fattura> fattureCliente(Contatto c){
+       int count = 0;
 
+       while(count < clienti.size()){
+           if (clienti.get(count).hasContatto(c))
+               break;
+
+           count++;
+       }
+       int finalCount = count;
+        return fatture.stream().filter(f -> f.getOrdine().getCliente().equals(clienti.get(finalCount))).collect(Collectors.toList());
     }
 
+    /*public void assegnoRisorse(){
+
+    }*/
+
     public List<Dipendente> getOperators() {
-        return  dipendenti.stream().filter(d -> d.getRuolo().equals("OPERATOR")).collect(Collectors.toList());
+        return  dipendenti.stream().filter(d -> d.getRuolo().equals(Ruoli.OPERATOR)).collect(Collectors.toList());
     }
 
     public  List<Cliente> getClientiContMagg10(){

@@ -1,5 +1,6 @@
 package it.unikey.persone;
 
+import it.unikey.Enum.Risorse;
 import it.unikey.Enum.Ruoli;
 
 import java.time.LocalDate;
@@ -15,6 +16,15 @@ public class Dipendente extends Operatore {
         super(nome, cognome, dataNascita);
         this.codice = count++ ;
         this.ruolo = Ruoli.valueOf(ruolo.toUpperCase()) ;
+    }
+
+    public void assegnaRisorsa(Dipendente d, Risorse r){
+        if (this.getRuolo().equals(Ruoli.MANAGER) || d.getRuolo().getI() > this.getRuolo().getI()) {
+            d.addRisorsa(r.name());
+        }
+        else {
+            System.out.println("Impossibile assegnare risorsa");
+        }
     }
 
     public int getCodice() {

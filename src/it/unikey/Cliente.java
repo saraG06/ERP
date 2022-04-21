@@ -19,6 +19,10 @@ public class Cliente {
         contatti = new ArrayList<>() ;
     }
 
+    public boolean hasContatto(Contatto c){
+        return contatti.contains(c);
+    }
+
     public ArrayList<Contatto> getContatti() {
         return contatti;
     }

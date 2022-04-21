@@ -7,12 +7,14 @@ public enum Ruoli {
     OPERATOR("operator",3);
 
     private String ruolo;
-    private String r;
-    public String getR() {
-        return r;
+    private int i;
+
+    public int getI() {
+        return i;
     }
 
     Ruoli(String ruolo, int i) {
-        this.r = ruolo;
+        this.ruolo = ruolo;
+        this.i=i;
     }
 }
