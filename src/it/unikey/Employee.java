@@ -88,10 +88,10 @@ public class Employee implements Operator{
     }
 
     public void assignResourceToSubordinate(Employee e, String resource){
-        if(Employee.this.getRole().getValue() > e.getRole().getValue()){
+        if(this.getRole().getValue() > e.getRole().getValue() && this.getClient().equals(e.getClient())){
             e.setResource(resource);
         }
-        else if (Employee.this.getRole().getValue() == 3){
+        else if (this.getRole().getValue() == 3 && this.getClient().equals(e.getClient())){
             e.setResource(resource);
         }
         else {
