@@ -1,5 +1,6 @@
 package it.unikey;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
@@ -13,9 +14,12 @@ public class Client {
     private static int id = 0;
 
     public Client(String name, String partitaIVA) {
-        this.code = id++;
+        this.code = ++id;
         this.name = name;
         this.partitaIVA = partitaIVA;
+        this.contacts = new ArrayList<>();
+        this.invoices = new ArrayList<>();
+        this.orders = new ArrayList<>();
     }
 
     public int getCode() {
@@ -68,6 +72,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return code + '\'' + name + '\'' + partitaIVA;
+        return code + " " + name + " " + partitaIVA;
     }
 }

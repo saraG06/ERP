@@ -14,6 +14,7 @@ public class Order {
     private static int id = 0;
 
     public Order(String details, String date, double price, Collaborator c, Client cl){
+        this.code = ++id;
         this.details = details;
         this.date = LocalDate.parse(date);
         this.price = price;
@@ -22,6 +23,7 @@ public class Order {
         this.employee = null;
     }
     public Order(String details, String date, double price, Employee e, Client cl){
+        this.code = ++id;
         this.details = details;
         this.date = LocalDate.parse(date);
         this.price = price;
@@ -88,7 +90,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return code + '\'' + details + '\'' + date + '\'' + price
-                + '\'' + collaborator.getCode()+ '\'' + client.getCode() + '\'' + employee.getCode();
+        return code + " " + details + " " + date + " " + price
+                + " " + collaborator.getCode() + " " + client.getCode() + " " + employee.getCode();
     }
 }

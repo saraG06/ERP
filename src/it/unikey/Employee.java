@@ -14,7 +14,7 @@ public class Employee implements Operator{
     private static int id = 0;
 
     public Employee(String name, String surname, String birth, String dateOfEmployment, String role, Client c) {
-        this.code = id++;
+        this.code = ++id;
         this.name = name;
         this.surname = surname;
         this.birth = LocalDate.parse(birth);
@@ -101,7 +101,7 @@ public class Employee implements Operator{
 
     @Override
     public String toString() {
-        return  code + '\'' + name + '\'' + surname + '\'' + birth + '\''
-                + resource + '\'' + dateOfEmployment + '\'' + role.name();
+        return  code + " " + name + " " + surname + " " + birth + " "
+                + resource + " " + dateOfEmployment + " " + role.name();
     }
 }

@@ -12,7 +12,7 @@ public class Contact {
     private static int id = 0;
 
     public Contact(String name, String surname, String birth) {
-        this.code = id++;
+        this.code = ++id;
         this.name = name;
         this.surname = surname;
         this.birth = LocalDate.parse(birth);
@@ -62,7 +62,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return code + '\'' + name + '\'' + surname + '\'' + birth;
+        return code + " " + name + " " + surname + " " + birth;
     }
 
 

@@ -1,10 +1,19 @@
 package it.unikey;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Main {
     public static void main(String[] args) {
         Client client1 = new Client("Unikey","00000000001");
         Client client2 = new Client("Reply","00000000002");
         Client client3 = new Client("ENI","00000000003");
+
+        List<Client> clients = new ArrayList<>();
+        clients.add(client1);
+        clients.add(client2);
+        clients.add(client3);
 
         Contact contact1 = new Contact("Matteo", "Samoila","2002-11-25");
         Contact contact2 = new Contact("Luigi", "Neri","1958-10-31");
@@ -40,6 +49,24 @@ public class Main {
         Order order5 = new Order("quinto ordine", "2018-04-21", 6.50 ,collaborator2, client2);
         Order order6 = new Order("sesto ordine", "2017-04-21", 7.50 ,collaborator3, client3);
 
-        
+        client1.getContacts().add(contact1);
+        client1.getContacts().add(contact2);
+        client1.getContacts().add(contact3);
+        client1.getContacts().add(contact4);
+        client1.getContacts().add(contact5);
+        client1.getContacts().add(contact6);
+        client1.getContacts().add(contact7);
+        client1.getContacts().add(contact8);
+        client1.getContacts().add(contact9);
+        client1.getContacts().add(contact10);
+        client2.getContacts().add(contact1);
+        client2.getContacts().add(contact2);
+        client2.getContacts().add(contact3);
+        client3.getContacts().add(contact1);
+        client3.getContacts().add(contact2);
+        client3.getContacts().add(contact3);
+
+        List<Client> ex01 = clients.stream().filter(client -> client.getContacts().size() >= 10).collect(Collectors.toList());
+        ex01.forEach(System.out::println);
     }
 }

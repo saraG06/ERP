@@ -12,7 +12,7 @@ public class Collaborator implements Operator{
     private static int id = 0;
 
     public Collaborator( String name, String surname, String birth, String resource) {
-        this.code = id++;
+        this.code = ++id;
         this.name = name;
         this.surname = surname;
         this.birth = LocalDate.parse(birth);
@@ -61,6 +61,6 @@ public class Collaborator implements Operator{
 
     @Override
     public String toString() {
-        return code + '\'' + name + '\'' + surname + '\'' + birth + '\'' + resource.name();
+        return code +" " + name + " " + surname + " " + birth + " " + resource.name();
     }
 }

@@ -10,7 +10,7 @@ public class Invoice {
     private static int id = 0;
 
     public Invoice(String date, Order o, Contact c) {
-        this.code = id++;
+        this.code = ++id;
         this.date = LocalDate.parse(date);
         this.order = o;
         this.contact = c;
@@ -46,6 +46,6 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "" + code + '\'' + date + '\'' + order.getCode() + '\'' + contact;
+        return " " + code + " " + date + " " + order.getCode() + " " + contact;
     }
 }
