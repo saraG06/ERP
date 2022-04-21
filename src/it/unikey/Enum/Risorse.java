@@ -8,7 +8,7 @@ public enum Risorse {
 
     private String risorsa;
     private String i;
-    public String getD() {
+    public String getI() {
         return i;
     }
 
