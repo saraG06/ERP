@@ -7,8 +7,14 @@ public class Invoice {
     private LocalDate date;
     private Order order;
     private Contact contact;
-
     private static int id = 0;
+
+    public Invoice(String date, Order o, Contact c) {
+        this.code = id++;
+        this.date = LocalDate.parse(date);
+        this.order = o;
+        this.contact = c;
+    }
 
     public int getCode() {
         return code;
@@ -36,13 +42,6 @@ public class Invoice {
 
     public void setContact(Contact contact) {
         this.contact = contact;
-    }
-
-    public Invoice(String date, Order o, Contact c) {
-        this.code = id++;
-        this.date = LocalDate.parse(date);
-        this.order = o;
-        this.contact = c;
     }
 
     @Override

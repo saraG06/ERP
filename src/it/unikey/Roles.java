@@ -1,9 +1,9 @@
 package it.unikey;
 
 public enum Roles {
-    MANAGER("manager", 1),
+    MANAGER("manager", 3),
     PROJECTMANAGER("projectmanager", 2),
-    OPERATOR("operator", 3);
+    OPERATOR("operator", 1);
 
     private String name;
     private int value;

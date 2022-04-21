@@ -1,18 +1,28 @@
 package it.unikey;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Contact {
-    private String code;
+    private int code;
     private String name;
     private String surname;
     private LocalDate birth;
 
-    public String getCode() {
+    private static int id = 0;
+
+    public Contact(String name, String surname, String birth) {
+        this.code = id++;
+        this.name = name;
+        this.surname = surname;
+        this.birth = LocalDate.parse(birth);
+    }
+
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -40,8 +50,20 @@ public class Contact {
         this.birth = birth;
     }
 
+    public List<Invoice> getClientInvoices(Client cl) {
+        if (cl.getContacts().contains(Contact.this)) {
+            return cl.getInvoices();
+        }
+        else {
+            System.out.println("Questo Contatto non fa parte dell'azienda");
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         return code + '\'' + name + '\'' + surname + '\'' + birth;
     }
+
+
 }

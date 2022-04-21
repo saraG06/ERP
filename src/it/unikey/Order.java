@@ -3,7 +3,7 @@ package it.unikey;
 import java.time.LocalDate;
 
 public class Order {
-    private String code;
+    private int code;
     private String details;
     private LocalDate date;
     private double price;
@@ -11,8 +11,9 @@ public class Order {
     private Client client;
     private Employee employee;
 
-    public Order(String code, String details, String date, double price, Collaborator c, Client cl){
-        this.code = code;
+    private static int id = 0;
+
+    public Order(String details, String date, double price, Collaborator c, Client cl){
         this.details = details;
         this.date = LocalDate.parse(date);
         this.price = price;
@@ -20,8 +21,7 @@ public class Order {
         this.client = cl;
         this.employee = null;
     }
-    public Order(String code, String details, String date, double price, Employee e, Client cl){
-        this.code = code;
+    public Order(String details, String date, double price, Employee e, Client cl){
         this.details = details;
         this.date = LocalDate.parse(date);
         this.price = price;
@@ -30,11 +30,11 @@ public class Order {
         this.collaborator = null;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

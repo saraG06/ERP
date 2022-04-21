@@ -2,20 +2,32 @@ package it.unikey;
 
 import java.time.LocalDate;
 
-public class Employee {
-    private String code;
+public class Employee implements Operator{
+    private int code;
     private String name;
     private String surname;
     private LocalDate birth;
     private Resources resource;
     private LocalDate dateOfEmployment;
     private Roles role;
+    private Client client;
+    private static int id = 0;
 
-    public String getCode() {
+    public Employee(String name, String surname, String birth, String dateOfEmployment, String role, Client c) {
+        this.code = id++;
+        this.name = name;
+        this.surname = surname;
+        this.birth = LocalDate.parse(birth);
+        this.dateOfEmployment = LocalDate.parse(dateOfEmployment);
+        this.role = Roles.valueOf(role.toUpperCase());
+        this.client = c;
+    }
+
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -47,8 +59,16 @@ public class Employee {
         return resource;
     }
 
-    public void setResource(Resources resource) {
-        this.resource = resource;
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setResource(String resource) {
+        this.resource = Resources.valueOf(resource.toUpperCase());
     }
 
     public LocalDate getDateOfEmployment() {
@@ -63,8 +83,20 @@ public class Employee {
         return role;
     }
 
-    public void setRole(Roles role) {
-        this.role = role;
+    public void setRole(String role) {
+        this.role = Roles.valueOf(role.toUpperCase());
+    }
+
+    public void assignResourceToSubordinate(Employee e, String resource){
+        if(Employee.this.getRole().getValue() > e.getRole().getValue()){
+            e.setResource(resource);
+        }
+        else if (Employee.this.getRole().getValue() == 3){
+            e.setResource(resource);
+        }
+        else {
+            System.out.println("Questo dipendente non può assegnare risorse");
+        }
     }
 
     @Override

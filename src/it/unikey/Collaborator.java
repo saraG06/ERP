@@ -2,18 +2,28 @@ package it.unikey;
 
 import java.time.LocalDate;
 
-public class Collaborator {
-    private String code;
+public class Collaborator implements Operator{
+    private int code;
     private String name;
     private String surname;
     private LocalDate birth;
     private Resources resource;
 
-    public String getCode() {
+    private static int id = 0;
+
+    public Collaborator( String name, String surname, LocalDate birth, String resource) {
+        this.code = id++;
+        this.name = name;
+        this.surname = surname;
+        this.birth = birth;
+        this.resource = Resources.valueOf(resource.toUpperCase());;
+    }
+
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -45,8 +55,8 @@ public class Collaborator {
         return resource;
     }
 
-    public void setResource(Resources resource) {
-        this.resource = resource;
+    public void setResource(String resource) {
+        this.resource = Resources.valueOf(resource.toUpperCase());
     }
 
     @Override
