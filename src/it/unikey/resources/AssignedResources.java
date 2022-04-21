@@ -1,4 +1,4 @@
-package resources;
+package it.unikey.resources;
 
 public enum AssignedResources {
 

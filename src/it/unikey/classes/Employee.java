@@ -1,6 +1,6 @@
-package classes;
+package it.unikey.classes;
 
-import resources.Role;
+import it.unikey.resources.Role;
 
 import java.time.LocalDate;
 
@@ -10,9 +10,9 @@ public class Employee extends Worker{
     private Role role;
 
 
-    public Employee(int code, String firstName, String lastName, int year, int month, int day, int assignedResources,
+    public Employee( String firstName, String lastName, int year, int month, int day,
                     int year1, int month1, int day1, int role) {
-        super(code, firstName, lastName, year, month, day, assignedResources);
+        super(firstName, lastName, year, month, day);
 
         this.hiringDate = LocalDate.of(year1, month1, day1);
         setRole(role);
@@ -56,4 +56,11 @@ public class Employee extends Worker{
         }
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "hiringDate=" + hiringDate +
+                ", role=" + role +
+                "} " + super.toString();
+    }
 }

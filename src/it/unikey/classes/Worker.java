@@ -1,27 +1,28 @@
-package classes;
+package it.unikey.classes;
 
-import resources.AssignedResources;
+import it.unikey.resources.AssignedResources;
 
 import java.time.LocalDate;
 
 public abstract class Worker {
 
     private int code;
+    private static int count = 0;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
     private AssignedResources assignedResources = AssignedResources.NONE;
 
-    public Worker(int code, String firstName, String lastName, int year, int month, int day, int assignedResources) {
-        this.code = code;
+    public Worker( String firstName, String lastName, int year, int month, int day, int assignedResources) {
+        this.code = count++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = LocalDate.of(year, month, day);
         setAssignedResources(assignedResources);
     }
 
-    public Worker(int code, String firstName, String lastName, int year, int month, int day) {
-        this.code = code;
+    public Worker( String firstName, String lastName, int year, int month, int day) {
+        this.code = count++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = LocalDate.of(year, month, day);
@@ -73,24 +74,42 @@ public abstract class Worker {
         }
     }
 
-    public void insertOrder(Client c, String detail, int year, int month, int day, double price) {
+    public Order insertOrder(Client c, String detail, int year, int month, int day, double price) {
 
         Order o = new Order(detail, year, month, day, price);
         c.getOrders().add(o);
+        o.associateClient(c);
+        o.associateWorker(Worker.this);
+        return o;
 
 
 
     }
 
-    public void newInvoice(Client c, Order order, int year, int month, int day) {
+    public void newInvoice(Client c, Order order, int year, int month, int day, Contact co) {
         Invoice i = new Invoice(year, month, day);
         i.setOrder(order);
-        c.getInvoices().add(i);
+        for (int j = 0; j < c.getContacts().size(); j++) {
+            if(c.getContacts().get(j) == co){
+                i.setContact(co);
+                c.getInvoices().add(i);
+            }else{
+                System.out.println("Contact not present in clientList");
+            }
+
+        }
+
 
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "code=" + code +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", assignedResources=" + assignedResources +
+                '}';
+    }
 }

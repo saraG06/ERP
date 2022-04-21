@@ -1,4 +1,4 @@
-package classes;
+package it.unikey.classes;
 
 import java.time.LocalDate;
 
@@ -9,6 +9,9 @@ public class Invoice {
     private LocalDate date;
     private Order order;
     private Contact contact;
+
+
+
 
     public Invoice(int year, int month, int day) {
 
@@ -48,15 +51,21 @@ public class Invoice {
         this.date = date;
     }
 
-    private void associateOrder(Order o) {
+   public void associateOrder(Order o) {
 
         order = o;
 
     }
 
-    private void associateContact(Contact c) {
 
-        contact = c;
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "code=" + code +
+                ", date=" + date +
+                ", order=" + order +
+                ", contact" + contact +
+                '}';
     }
-
 }

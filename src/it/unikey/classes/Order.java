@@ -1,4 +1,4 @@
-package classes;
+package it.unikey.classes;
 
 import java.time.LocalDate;
 
@@ -17,6 +17,7 @@ public class Order {
         this.detail = detail;
         this.date = LocalDate.of(year, month, day);
         this.price = price;
+
     }
 
     public int getCode() {
@@ -59,4 +60,13 @@ public class Order {
         client = c;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "code=" + code +
+                ", detail='" + detail + '\'' +
+                ", date=" + date +
+                ", price=" + price +
+                '}';
+    }
 }

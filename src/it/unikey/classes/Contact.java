@@ -1,29 +1,22 @@
-package classes;
+package it.unikey.classes;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 public class Contact {
 
     private int code;
+    private static int count = 0;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    private Client client;
 
-    public Contact(int code, String firstName, String lastName, int year, int month, int day) {
-        this.code = code;
+
+    public Contact( String firstName, String lastName, int year, int month, int day) {
+        this.code = count++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = LocalDate.of(year, month, day);
-    }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public int getCode() {
@@ -58,10 +51,14 @@ public class Contact {
         this.birthDate = birthDate;
     }
 
-    public void seeInvoices(){
-        for(Invoice i : Contact.this.client.getInvoices()){
-            System.out.println(i);
-        }
-    }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "code=" + code +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
+    }
 }
