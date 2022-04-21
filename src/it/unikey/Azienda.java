@@ -37,7 +37,7 @@ public class Azienda {
         ordiniP.forEach(System.out::println) ;
         int i = sc.nextInt() ;
         Ordine o = ordiniP.get(i-1) ;
-        
+
             System.out.println("scegli contatto");
             o.getCliente().getContatti().forEach(System.out::println);
             sc = new Scanner(System.in) ;
