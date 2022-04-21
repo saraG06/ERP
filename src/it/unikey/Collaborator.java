@@ -11,11 +11,11 @@ public class Collaborator implements Operator{
 
     private static int id = 0;
 
-    public Collaborator( String name, String surname, LocalDate birth, String resource) {
+    public Collaborator( String name, String surname, String birth, String resource) {
         this.code = id++;
         this.name = name;
         this.surname = surname;
-        this.birth = birth;
+        this.birth = LocalDate.parse(birth);
         this.resource = Resources.valueOf(resource.toUpperCase());;
     }
 

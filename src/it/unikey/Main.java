@@ -18,16 +18,28 @@ public class Main {
         Contact contact10 = new Contact("Piziano", "Tadovani","1997-06-12");
         Contact contact11 = new Contact("Bruno", "Mars","1999-10-28");
 
-        Employee employee1 = new Employee("Janice","Gentry", "1955-09-20","2018-03-02","operator");
-        Employee employee2 = new Employee("Ayub","Bateman", "1956-08-29","2018-11-29","operator");
-        Employee employee3 = new Employee("Ira","Mcguire", "1957-07-02","2020-03-19","operator");
-        Employee employee4 = new Employee("Kiefer","Flower", "1959-09-15","2020-05-18","operator");
-        Employee employee5 = new Employee("Mateusz","Goulding", "1968-12-03","2020-06-19","projectmanager");
-        Employee employee6 = new Employee("Amiee","Strickland", "1970-02-10","2020-08-13","projectmanager");
-        Employee employee7 = new Employee("Hollie","Mill", "1975-10-15","2020-10-06","projectmanager");
-        Employee employee8 = new Employee("Dougie","Berry", "1980-10-01","2021-03-19","manager");
-        Employee employee9 = new Employee("Asiyah","Hollis", "1991-03-14","2021-09-10","manager");
-        Employee employee10 = new Employee("Seb","Sierra", "1992-01-16","2022-04-07","manager");
+        Collaborator collaborator1 = new Collaborator("Giggio", "Donnarumma" , "1982-11-12", "car");
+        Collaborator collaborator2 = new Collaborator("Gian", "Franco" , "1989-07-03", "pc");
+        Collaborator collaborator3 = new Collaborator("Camillo", "Benson" , "1997-09-16", "phone");
 
+        Employee employee1 = new Employee("Janice","Gentry", "1955-09-20","2018-03-02","operator", client1);
+        Employee employee2 = new Employee("Ayub","Bateman", "1956-08-29","2018-11-29","manager", client1);
+        Employee employee3 = new Employee("Ira","Mcguire", "1957-07-02","2020-03-19","operator", client2);
+        Employee employee4 = new Employee("Kiefer","Flower", "1959-09-15","2020-05-18","operator", client3);
+        Employee employee5 = new Employee("Mateusz","Goulding", "1968-12-03","2020-06-19","projectmanager", client1);
+        Employee employee6 = new Employee("Amiee","Strickland", "1970-02-10","2020-08-13","projectmanager", client2);
+        Employee employee7 = new Employee("Hollie","Mill", "1975-10-15","2020-10-06","projectmanager", client3);
+        Employee employee8 = new Employee("Dougie","Berry", "1980-10-01","2021-03-19","manager", client1);
+        Employee employee9 = new Employee("Asiyah","Hollis", "1991-03-14","2021-09-10","manager", client2);
+        Employee employee10 = new Employee("Seb","Sierra", "1992-01-16","2022-04-07","manager", client3);
+
+        Order order1 = new Order("primo ordine", "2022-04-21", 2.50 ,employee1, client1);
+        Order order2 = new Order("secondo ordine", "2021-04-21", 3.50 ,employee6, client2);
+        Order order3 = new Order("terzo ordine", "2020-04-21", 4.50 ,employee10, client3);
+        Order order4 = new Order("quarto ordine", "2019-04-21", 5.50 ,collaborator1, client1);
+        Order order5 = new Order("quinto ordine", "2018-04-21", 6.50 ,collaborator2, client2);
+        Order order6 = new Order("sesto ordine", "2017-04-21", 7.50 ,collaborator3, client3);
+
+        
     }
 }
