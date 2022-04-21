@@ -23,7 +23,7 @@ public class Main {
         Contact co4 = new Contact("Pippo", "Sowlo", 1990, 12, 25);
         Contact co5 = new Contact("Stefano", "Ricci", 1988,07, 14);
         Contact co6 = new Contact("Tiziano", "Padovani", 1992,10, 22);
-        Contact co7 = new Contact ("Maria", "Polli", 1996,02,07,);
+        Contact co7 = new Contact ("Maria", "Polli", 1996,02,07);
         Contact co8 = new Contact("Giulia", "Sacchi", 2000, 12, 12);
         Contact co9 = new Contact("Luca", "Tacco", 1990, 11, 30);
         Contact co10 = new Contact("Giovanni", "Lise", 1998, 10, 02);
@@ -38,7 +38,7 @@ public class Main {
         Contact co19 = new Contact("Maddalena","Zingaroni", 1994, 11, 18);
         Contact co20 = new Contact("Patrizio","De Angelis", 1992, 03, 20);
 
-        cl1.setContacts();
+
 
         Order o1 = e1.insertOrder(cl1,"Consulenza", 2022,01,20,50000.00);
         Order o2 = e3.insertOrder(cl1, "Consulenza", 2021, 02, 03, 45000.00);
@@ -50,7 +50,7 @@ public class Main {
 
 
 
-        co1.seeInvoices();
+        
 
 
 
