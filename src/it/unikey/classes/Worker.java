@@ -90,13 +90,11 @@ public abstract class Worker {
         Invoice i = new Invoice(year, month, day);
         i.setOrder(order);
         for (int j = 0; j < c.getContacts().size(); j++) {
-            if(c.getContacts().get(j) == co){
+            if(c.getContacts().get(j).getCode() == co.getCode()){
                 i.setContact(co);
                 c.getInvoices().add(i);
-            }else{
-                System.out.println("Contact not present in clientList");
+                Streams.getInvoices().add(i);
             }
-
         }
 
 

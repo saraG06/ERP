@@ -27,6 +27,7 @@ public class Client {
         this.contacts = new ArrayList<>();
         this.orders = new ArrayList<>();
         this.invoices = new ArrayList<>();
+        Streams.getClients().add(Client.this);
     }
 
     public ArrayList<Contact> getContacts() {
@@ -76,6 +77,12 @@ public class Client {
             }
         }
         return null;
+    }
+
+    public void addContact(Contact c){
+
+        contacts.add(c);
+
     }
 
     @Override

@@ -17,6 +17,8 @@ public class Employee extends Worker{
         this.hiringDate = LocalDate.of(year1, month1, day1);
         setRole(role);
 
+        Streams.getEmployees().add(Employee.this);
+
     }
 
     public LocalDate getHiringDate() {
@@ -41,7 +43,8 @@ public class Employee extends Worker{
     }
 
     public void assignResources(int resource, Employee e) {
-        if(Employee.this.getRole().getValue() > e.getRole().getValue()) {
+
+        if(Employee.this.getRole().getValue() < e.getRole().getValue()) {
 
             e.setAssignedResources(resource);
 

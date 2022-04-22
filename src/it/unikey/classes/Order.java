@@ -17,6 +17,7 @@ public class Order {
         this.detail = detail;
         this.date = LocalDate.of(year, month, day);
         this.price = price;
+        Streams.getOrders().add(Order.this);
 
     }
 
@@ -58,6 +59,10 @@ public class Order {
 
     public void associateClient(Client c) {
         client = c;
+    }
+
+    public Client getClient() {
+        return client;
     }
 
     @Override
