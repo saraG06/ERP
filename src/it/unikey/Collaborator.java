@@ -1,8 +1,9 @@
 package it.unikey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Collaborator implements Operator{
+public class Collaborator implements Operator, Serializable {
     private int code;
     private String name;
     private String surname;

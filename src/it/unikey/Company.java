@@ -1,7 +1,6 @@
 package it.unikey;
 
-import java.io.FileWriter;
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -120,6 +119,17 @@ public class Company implements Serializable {
     }
 
     public void countEmployees(){
+        try(ObjectInputStream ob = new ObjectInputStream(new FileInputStream("resources/" + this.getName() + ".txt"))) {
+            ArrayList<Employee> o = (ArrayList<Employee>) ob.readObject();
 
+            this.setEmployees(o);
+            System.out.println(o.size());
+        }
+        catch(IOException e){
+            e.getMessage();
+        }
+        catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

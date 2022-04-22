@@ -95,9 +95,9 @@ public class Main {
         company3.getEmployees().add(employee7);
         company3.getEmployees().add(employee10);
 
-        try(ObjectOutputStream ob1 = new ObjectOutputStream(new FileOutputStream("resources/Company1.txt"));
-            ObjectOutputStream ob2 = new ObjectOutputStream(new FileOutputStream("resources/Company2.txt"));
-            ObjectOutputStream ob3 = new ObjectOutputStream(new FileOutputStream("resources/Company3.txt"))){
+        try(ObjectOutputStream ob1 = new ObjectOutputStream(new FileOutputStream("resources/MMT.txt"));
+            ObjectOutputStream ob2 = new ObjectOutputStream(new FileOutputStream("resources/PRT.txt"));
+            ObjectOutputStream ob3 = new ObjectOutputStream(new FileOutputStream("resources/Vodafone.txt"))){
             ob1.writeObject(company1.getEmployees());
             ob2.writeObject(company2.getEmployees());
             ob3.writeObject(company3.getEmployees());
@@ -124,7 +124,7 @@ public class Main {
             // c.invoiceDateAfter("2019-12-31");
             // c.orderWithoutInvoice();
             // c.employeeHiredLastMonth();
+            c.countEmployees();
         }
-
     }
 }

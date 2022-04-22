@@ -1,8 +1,9 @@
 package it.unikey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Order {
+public class Order implements Serializable {
     private int code;
     private String details;
     private LocalDate date;
