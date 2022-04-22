@@ -88,9 +88,13 @@ public class Order {
         this.employee = employee;
     }
 
+    public void stampaConCollaborator(){
+        System.out.println( code + " " + details + " " + date + " " + price
+                + " " + client.getCode() +" " + collaborator.getCode());
+    }
     @Override
     public String toString() {
         return code + " " + details + " " + date + " " + price
-                + " " + collaborator.getCode() + " " + client.getCode() + " " + employee.getCode();
+                + " " + client.getCode() + " " + employee.getCode();
     }
 }

@@ -9,10 +9,6 @@ public class Client {
     private String name;
     private String partitaIVA;
     private List<Contact> contacts;
-    private List<Invoice> invoices;
-    private List<Order> orders;
-
-    private List<Employee> employees;
 
     private static int id = 0;
 
@@ -21,9 +17,6 @@ public class Client {
         this.name = name;
         this.partitaIVA = partitaIVA;
         this.contacts = new ArrayList<>();
-        this.invoices = new ArrayList<>();
-        this.orders = new ArrayList<>();
-        this.employees = new ArrayList<>();
     }
 
     public int getCode() {
@@ -56,72 +49,6 @@ public class Client {
 
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
-    }
-
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(List<Invoice> invoices) {
-        this.invoices = invoices;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public void moreThan10(){
-        if(this.getContacts().size() >= 10){
-            System.out.println(this.getName() +" ha almeno 10 contatti");
-        }
-    }
-    public void invoicesReply(){
-        if(this.getName().equals("Reply")){
-            System.out.println(this.getInvoices());
-        }
-    }
-
-    public void carOwnerEmployees(){
-        for (Employee e : this.getEmployees()) {
-            try{
-                if(e.getResource().getValue() == 1){
-                    System.out.println(e);
-                }
-            } catch(NullPointerException n){
-                continue;
-            }
-
-        }
-    }
-
-    public void invoiceDateAfter(String data){
-        for(Invoice i : this.getInvoices()){
-            if (i.getDate().compareTo(LocalDate.parse(data)) > 0){
-                System.out.println(i);
-            }
-        }
-    }
-
-    public void orderWithoutInvoice(){
-        for (Order o : this.getOrders()) {
-            for (Invoice i : this.getInvoices()){
-                if(i.getOrder().getCode() != o.getCode()){
-                    System.out.println(o);
-                }
-            }
-        }
     }
 
     @Override

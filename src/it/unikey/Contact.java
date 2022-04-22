@@ -50,14 +50,14 @@ public class Contact {
         this.birth = birth;
     }
 
-    public List<Invoice> getClientInvoices(Client cl) {
-        if (cl.getContacts().contains(Contact.this)) {
-            return cl.getInvoices();
+    public List<Invoice> getClientInvoices(Company c) {
+        for (Client cl : c.getClients()){
+            if(cl.getContacts().contains(this)){
+               return c.getInvoices();
+            }
         }
-        else {
-            System.out.println("Questo Contatto non fa parte dell'azienda");
-            return null;
-        }
+        System.out.println("Questo Contatto non fa parte dell'azienda");
+        return null;
     }
 
     @Override

@@ -1,8 +1,9 @@
 package it.unikey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Employee implements Operator{
+public class Employee implements Operator, Serializable {
     private int code;
     private String name;
     private String surname;
@@ -10,17 +11,17 @@ public class Employee implements Operator{
     private Resources resource;
     private LocalDate dateOfEmployment;
     private Roles role;
-    private Client client;
+    private Company company;
     private static int id = 0;
 
-    public Employee(String name, String surname, String birth, String dateOfEmployment, String role, Client c) {
+    public Employee(String name, String surname, String birth, String dateOfEmployment, String role, Company c) {
         this.code = ++id;
         this.name = name;
         this.surname = surname;
         this.birth = LocalDate.parse(birth);
         this.dateOfEmployment = LocalDate.parse(dateOfEmployment);
         this.role = Roles.valueOf(role.toUpperCase());
-        this.client = c;
+        this.company = c;
     }
 
     public int getCode() {
@@ -59,12 +60,12 @@ public class Employee implements Operator{
         return resource;
     }
 
-    public Client getClient() {
-        return client;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public void setResource(String resource) {
@@ -88,10 +89,10 @@ public class Employee implements Operator{
     }
 
     public void assignResourceToSubordinate(Employee e, String resource){
-        if(this.getRole().getValue() > e.getRole().getValue() && this.getClient().equals(e.getClient())){
+        if(this.getRole().getValue() > e.getRole().getValue() && this.getCompany().equals(e.getCompany())){
             e.setResource(resource);
         }
-        else if (this.getRole().getValue() == 3 && this.getClient().equals(e.getClient())){
+        else if (this.getRole().getValue() == 3 && this.getCompany().equals(e.getCompany())){
             e.setResource(resource);
         }
         else {
