@@ -17,32 +17,16 @@ public class Fattura {
         this.ordine= ordine;
     }
 
-    public UUID getCodice() {
-        return codice;
-    }
-
     public LocalDate getData() {
         return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
     }
 
     public Contatto getContatto() {
         return contatto;
     }
 
-    public void setContatto(Contatto contatto) {
-        this.contatto = contatto;
-    }
-
     public Ordine getOrdine() {
         return ordine;
-    }
-
-    public void setOrdine(Ordine ordine) {
-        this.ordine = ordine;
     }
 
     @Override

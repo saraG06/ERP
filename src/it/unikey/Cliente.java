@@ -14,25 +14,8 @@ public class Cliente {
         this.nome = nome;
         this.PI = PI;
     }
-
-    public UUID getCodice() {
-        return codice;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getPI() {
-        return PI;
-    }
-
-    public void setPI(String PI) {
-        this.PI = PI;
     }
 
     @Override

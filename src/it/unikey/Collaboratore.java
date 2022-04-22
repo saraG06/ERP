@@ -13,14 +13,10 @@ public class Collaboratore extends Operatore{
         this.codice= UUID.randomUUID();
     }
 
-    public UUID getCodice() {
-        return codice;
-    }
-
     @Override
     public String toString() {
-        return "Collaboratore{" +
-                "codice=" + codice +
+        return super.toString() +
+                " ,codice=" + codice +
                 '}';
     }
 }

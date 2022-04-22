@@ -1,10 +1,11 @@
 package it.unikey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Dipendente extends Operatore{
+public class Dipendente extends Operatore implements Serializable {
     private final UUID codice;
     private LocalDate assunzione;
     private enum Ruolo{
@@ -21,33 +22,12 @@ public class Dipendente extends Operatore{
         this.ruolo = String.valueOf(Ruolo.valueOf(ruolo));
     }
 
-    public UUID getCodice() {
-        return codice;
-    }
-
     public LocalDate getAssunzione() {
         return assunzione;
     }
 
-    public void setAssunzione(LocalDate assunzione) {
-        this.assunzione = assunzione;
-    }
-
     public String getRuolo() {
         return ruolo.toString();
-    }
-
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
-    }
-
-    @Override
-    public String toString() {
-        return "Dipendente{" +
-                "codice=" + codice +
-                ", assunzione=" + assunzione +
-                ", ruolo=" + ruolo +
-                '}';
     }
 
     public void assegnaRisorse(Risorsa r, Dipendente dipendente){
@@ -63,5 +43,14 @@ public class Dipendente extends Operatore{
                 System.out.println("Impossibile assegnare risorsa");
         } else                                              //Operator non può assegnare risorse
             System.out.println("Questo dipendente non può assegnare risorse");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", codice=" + codice +
+                ", assunzione=" + assunzione +
+                ", ruolo='" + ruolo + '\'' +
+                '}';
     }
 }

@@ -16,14 +16,17 @@ public class Operatore extends Persona{
         return risorseAssegnate;
     }
 
-    public void setRisorseAssegnate(ArrayList<Risorsa> risorseAssegnate) {
-        this.risorseAssegnate = risorseAssegnate;
-    }
-
     public Fattura generaFattura(Ordine o, Contatto c){
         if(c.getCliente().equals(o.getCliente()))
             return new Fattura(LocalDate.now(), c, o);
         else
             return null;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", risorseAssegnate=" + risorseAssegnate +
+                '}';
     }
 }

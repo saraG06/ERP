@@ -19,39 +19,18 @@ public class Ordine {
         this.cliente= cliente;
     }
 
-    public UUID getCodice() {
-        return codice;
-    }
-
-    public String getDettaglio() {
-        return dettaglio;
-    }
-
-    public void setDettaglio(String dettaglio) {
-        this.dettaglio = dettaglio;
-    }
-
-    public LocalDate getDataImporto() {
-        return dataImporto;
-    }
-
-    public void setDataImporto(LocalDate dataImporto) {
-        this.dataImporto = dataImporto;
-    }
-
-    public Operatore getOperatore() {
-        return operatore;
-    }
-
-    public void setOperatore(Operatore operatore) {
-        this.operatore = operatore;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    @Override
+    public String toString() {
+        return "Ordine{" +
+                "codice=" + codice +
+                ", dettaglio='" + dettaglio + '\'' +
+                ", dataImporto=" + dataImporto +
+                ", operatore=" + operatore +
+                ", cliente=" + cliente +
+                '}';
     }
 }

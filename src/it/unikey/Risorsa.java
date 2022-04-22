@@ -1,6 +1,8 @@
 package it.unikey;
 
-public class Risorsa {
+import java.io.Serializable;
+
+public class Risorsa implements Serializable {
 
     private enum RisorsaAssegnata{
         MACCHINA,
@@ -17,7 +19,9 @@ public class Risorsa {
         return String.valueOf(risorsaAssegnata);
     }
 
-    public void setRisorsaAssegnata(String risorsaAssegnata) {
-        this.risorsaAssegnata = risorsaAssegnata;
+    @Override
+    public String toString() {
+        return "risorsaAssegnata='" + risorsaAssegnata + '\'' +
+                '}';
     }
 }

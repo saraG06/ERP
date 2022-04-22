@@ -15,24 +15,8 @@ public class Contatto extends Persona{
         this.cliente= cliente;
     }
 
-    public UUID getCodice() {
-        return codice;
-    }
-
     public Cliente getCliente() {
         return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    @Override
-    public String toString() {
-        return "Contatto{" +
-                "codice=" + codice +
-                ", cliente=" + cliente +
-                '}';
     }
 
     public ArrayList<Fattura> cercaFatture(ArrayList<Fattura> lista){
@@ -42,5 +26,13 @@ public class Contatto extends Persona{
                 listaFatture.add(x);
         }
         return listaFatture;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "codice=" + codice +
+                ", cliente=" + cliente +
+                '}';
     }
 }
