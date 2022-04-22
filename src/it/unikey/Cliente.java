@@ -50,4 +50,14 @@ public class Cliente {
     public void setpIva(String pIva) {
         this.pIva = pIva;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "codice=" + codice +
+                ", nome='" + nome + '\'' +
+                ", pIva='" + pIva + '\'' +
+                ", contatti=" + contatti +
+                '}';
+    }
 }

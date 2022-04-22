@@ -58,4 +58,16 @@ public class Ordine {
     public void setDettaglio(String dettaglio) {
         this.dettaglio = dettaglio;
     }
+
+    @Override
+    public String toString() {
+        return "Ordine{" +
+                "codice=" + codice +
+                ", data=" + data +
+                ", importo=" + importo +
+                ", dettaglio='" + dettaglio + '\'' +
+                ", oper=" + oper +
+                ", cliente=" + cliente +
+                '}';
+    }
 }

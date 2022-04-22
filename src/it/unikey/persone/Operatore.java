@@ -2,9 +2,10 @@ package it.unikey.persone;
 
 import it.unikey.Enum.Risorse;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
-public abstract class Operatore extends Persona {
+public abstract class Operatore extends Persona implements Serializable {
 
     HashSet<Risorse> risorse ;
 
@@ -19,5 +20,13 @@ public abstract class Operatore extends Persona {
 
     public HashSet<Risorse> getRisorse() {
         return risorse;
+    }
+
+    @Override
+    public String toString() {
+        return "Operatore{" +
+                super.toString() +
+                "risorse=" + risorse +
+                '}';
     }
 }

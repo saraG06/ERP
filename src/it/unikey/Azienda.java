@@ -7,6 +7,7 @@ import it.unikey.persone.Contatto;
 import it.unikey.persone.Dipendente;
 import it.unikey.persone.Operatore;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,20 @@ public class Azienda {
     ArrayList<Cliente> clienti ;
     ArrayList<Fattura> fatture ;
     ArrayList<Ordine> ordini ;
+    private static final String pathfile = "ERP/Resources/Dipendenti";
+
+    public Azienda(){
+        this.collaboratori = new ArrayList<>();
+        try(FileInputStream f= new FileInputStream(pathfile);
+            ObjectInputStream i= new ObjectInputStream(f);){
+            dipendenti = (ArrayList<Dipendente>) i.readObject();
+        }catch(IOException | ClassNotFoundException c){
+            System.out.println(c.getMessage());
+        }
+        this.clienti = new ArrayList<>();
+        this.fatture = new ArrayList<>();
+        this.ordini = new ArrayList<>();
+    }
 
     public int numDipendenti(){
         return this.dipendenti.size() ;
@@ -32,7 +47,8 @@ public class Azienda {
 //                scegli il contatto
 //                crei fattura
         Scanner sc = new Scanner(System.in) ;
-        List<Ordine> ordiniP = ordini.stream().filter(o -> o.getOper().equals(p)).collect(Collectors.toList());
+        List<Ordine> nonFatturati = this.getOrdineNoFatture() ;
+        List<Ordine> ordiniP = ordini.stream().filter(o -> o.getOper().equals(p)&& nonFatturati.contains(o)).collect(Collectors.toList());
         System.out.println("scegli ordine");
         ordiniP.forEach(System.out::println) ;
         int i = sc.nextInt() ;
@@ -47,7 +63,9 @@ public class Azienda {
 //            sc = new Scanner(System.in) ;
 //            String data = sc.nextLine() ;
 //            return new Fattura(data,o,c) ;
-            return new Fattura(LocalDate.now().toString(),o,c) ;
+        Fattura f = new Fattura(LocalDate.now().toString(),o,c) ;
+        this.fatture.add(f) ;
+            return  f;
 
     }
 
@@ -64,12 +82,8 @@ public class Azienda {
         return fatture.stream().filter(f -> f.getOrdine().getCliente().equals(clienti.get(finalCount))).collect(Collectors.toList());
     }
 
-    /*public void assegnoRisorse(){
-
-    }*/
-
     public List<Dipendente> getOperators() {
-        return  dipendenti.stream().filter(d -> d.getRuolo().equals(Ruoli.OPERATOR)).collect(Collectors.toList());
+        return  dipendenti.stream().filter(d -> d.getRuolo().equals(Ruoli.OPERATOR) && (d.getDataAssunzione().isAfter(LocalDate.now().minusDays(31)))).collect(Collectors.toList());
     }
 
     public  List<Cliente> getClientiContMagg10(){
@@ -86,5 +100,23 @@ public class Azienda {
 
     public List<Fattura> getFattureReply(){
         return  fatture.stream().filter(f -> f.getOrdine().getCliente().getNome().equalsIgnoreCase("reply")).collect(Collectors.toList());
+    }
+
+    public List<Ordine> getOrdineNoFatture(){
+        List<Ordine> fatturati = fatture.stream().map(f -> f.getOrdine()).collect(Collectors.toList());
+        return ordini.stream().filter(o -> !fatturati.contains(o)).collect(Collectors.toList());
+    }
+
+    public void salvaDipendenti(){
+        try(
+                FileOutputStream f = new FileOutputStream(pathfile);
+                ObjectOutputStream o = new ObjectOutputStream(f);
+        ){
+            o.writeObject(this.dipendenti);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -3,24 +3,32 @@ package it.unikey.persone;
 import it.unikey.Enum.Risorse;
 import it.unikey.Enum.Ruoli;
 
+import javax.sound.sampled.Line;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 
-public class Dipendente extends Operatore {
+public class Dipendente extends Operatore implements Serializable {
 
     private static int count = 0 ;
     private int codice;
     private LocalDate dataAssunzione;
     private Ruoli ruolo;
 
-    public Dipendente(String nome, String cognome, String dataNascita,String ruolo) {
+
+    public Dipendente(String nome, String cognome, String dataNascita,String dataAssunzione,String ruolo) {
         super(nome, cognome, dataNascita);
         this.codice = count++ ;
-        this.ruolo = Ruoli.valueOf(ruolo.toUpperCase()) ;
+        this.dataAssunzione = LocalDate.parse(dataAssunzione);
+        this.ruolo = Ruoli.valueOf(ruolo.toUpperCase());
+
     }
 
     public void assegnaRisorsa(Dipendente d, Risorse r){
         if (this.getRuolo().equals(Ruoli.MANAGER) || d.getRuolo().getI() > this.getRuolo().getI()) {
             d.addRisorsa(r.name());
+            System.out.println("Assegnata!");
         }
         else {
             System.out.println("Impossibile assegnare risorsa");
@@ -49,5 +57,15 @@ public class Dipendente extends Operatore {
 
     public void setRuolo(Ruoli ruolo) {
         this.ruolo = ruolo;
+    }
+
+    @Override
+    public String toString() {
+        return "Dipendente{" +
+                super.toString()  +
+                "codice=" + codice +
+                ", dataAssunzione=" + dataAssunzione +
+                ", ruolo=" + ruolo +
+                '}';
     }
 }

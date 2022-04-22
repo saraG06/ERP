@@ -13,4 +13,12 @@ public class Contatto extends Persona {
     public int getCodice() {
         return codice;
     }
+
+    @Override
+    public String toString() {
+        return "Contatto{" +
+                super.toString() +
+                "codice=" + codice +
+                '}';
+    }
 }

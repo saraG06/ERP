@@ -1,8 +1,9 @@
 package it.unikey.persone;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable {
 
     private String nome ;
     private String cognome;
@@ -36,5 +37,14 @@ public abstract class Persona {
 
     public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", dataNascita=" + dataNascita +
+                '}';
     }
 }

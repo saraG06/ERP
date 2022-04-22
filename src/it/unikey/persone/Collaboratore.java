@@ -13,4 +13,12 @@ public class Collaboratore extends Operatore {
     public int getCodice() {
         return codice;
     }
+
+    @Override
+    public String toString() {
+        return "Collaboratore{" +
+                super.toString() +
+                "codice=" + codice +
+                '}';
+    }
 }
