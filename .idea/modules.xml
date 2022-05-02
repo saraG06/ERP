@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ERP-Esercizio.iml" filepath="$PROJECT_DIR$/ERP-Esercizio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ERP_SpringBoot.iml" filepath="$PROJECT_DIR$/ERP_SpringBoot.iml" />
     </modules>
   </component>
 </project>
